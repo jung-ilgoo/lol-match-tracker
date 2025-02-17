@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경기 기록 조회</title>
+</head>
+<body>
+    <h1>📜 경기 기록 조회</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>날짜</th>
+                <th>블루팀</th>
+                <th>레드팀</th>
+                <th>승리 팀</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for match in matches %}
+            <tr>
+                <td>{{ match[1] }}</td>  <!-- match_date -->
+                <td>
+                    TOP: {{ match[2] }}, JG: {{ match[3] }}, MID: {{ match[4] }}, ADC: {{ match[5] }}, SUP: {{ match[6] }}
+                </td>
+                <td>
+                    TOP: {{ match[7] }}, JG: {{ match[8] }}, MID: {{ match[9] }}, ADC: {{ match[10] }}, SUP: {{ match[11] }}
+                </td>
+                <td>{{ match[12] }}</td>  <!-- winner -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">🏠 홈으로</a>
+</body>
+</html>

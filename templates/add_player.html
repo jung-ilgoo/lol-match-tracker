@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플레이어 추가</title>
+</head>
+<body>
+    <h1>👤 플레이어 추가</h1>
+
+    <form action="/add_player" method="POST">
+        <label for="player_name">플레이어 ID:</label>
+        <input type="text" id="player_name" name="player_name" required>
+        <button type="submit">추가</button>
+    </form>
+
+    <h2>📋 등록된 플레이어 목록</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>플레이어 이름</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+            <tr>
+                <td>{{ player[0] }}</td>
+                <td>{{ player[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/">🏠 홈으로</a>
+</body>
+</html>

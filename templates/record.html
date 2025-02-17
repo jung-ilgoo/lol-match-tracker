@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경기 기록 입력</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .team-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .team-box {
+            width: 48%;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        .blue-team {
+            background-color: #d9e9ff;
+        }
+        .red-team {
+            background-color: #ffdbdb;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .kda-container {
+            display: flex;
+            gap: 5px;
+        }
+        .kda-container input {
+            width: 32%;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .winner-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚔ 경기 기록 입력</h1>
+        <form action="/record" method="POST">
+            <label for="match_date">경기 날짜:</label>
+            <input type="date" id="match_date" name="match_date" required><br><br>
+
+            <div class="team-container">
+                <!-- 블루팀 -->
+                <div class="team-box blue-team">
+                    <h2>🔹 블루팀</h2>
+                    {% for position in ['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT'] %}
+                    <label>{{ position }}</label>
+                    <select name="blue_{{ position.lower() }}" required>
+                        <option value="" selected disabled>선택하세요</option>
+                        {% for player in players %}
+                        <option value="{{ player }}">{{ player }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="blue_{{ position.lower() }}_champion" required>
+                        <option value="" selected disabled>선택하세요</option>
+                        {% for champion in champions %}
+                        <option value="{{ champion }}">{{ champion }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="kda-container">
+                        <input type="number" name="blue_{{ position.lower() }}_kill" placeholder="킬" required min="0">
+                        <input type="number" name="blue_{{ position.lower() }}_death" placeholder="데스" required min="0">
+                        <input type="number" name="blue_{{ position.lower() }}_assist" placeholder="어시" required min="0">
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- 레드팀 -->
+                <div class="team-box red-team">
+                    <h2>🔹 레드팀</h2>
+                    {% for position in ['TOP', 'JUNGLE', 'MID', 'ADC', 'SUPPORT'] %}
+                    <label>{{ position }}</label>
+                    <select name="red_{{ position.lower() }}" required>
+                        <option value="" selected disabled>선택하세요</option>
+                        {% for player in players %}
+                        <option value="{{ player }}">{{ player }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="red_{{ position.lower() }}_champion" required>
+                        <option value="" selected disabled>선택하세요</option>
+                        {% for champion in champions %}
+                        <option value="{{ champion }}">{{ champion }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="kda-container">
+                        <input type="number" name="red_{{ position.lower() }}_kill" placeholder="킬" required min="0">
+                        <input type="number" name="red_{{ position.lower() }}_death" placeholder="데스" required min="0">
+                        <input type="number" name="red_{{ position.lower() }}_assist" placeholder="어시" required min="0">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="winner-container">
+                <h2>🏆 승리 팀 선택</h2>
+                <select id="winner" name="winner" required>
+                    <option value="" selected disabled>선택하세요</option>
+                    <option value="blue">블루팀</option>
+                    <option value="red">레드팀</option>
+                </select>
+            </div>
+
+            <br><br>
+            <button type="submit">경기 기록 저장</button>
+        </form>
+    </div>
+</body>
+</html>

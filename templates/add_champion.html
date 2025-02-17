@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>챔피언 추가</title>
+</head>
+<body>
+    <h1>⚔️ 챔피언 추가</h1>
+
+    <form action="/add_champion" method="POST">
+        <label for="champion_name">챔피언 이름:</label>
+        <input type="text" id="champion_name" name="champion_name" required>
+        <button type="submit">추가</button>
+    </form>
+
+    <h2>📋 등록된 챔피언 목록</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>챔피언 이름</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for champion in champions %}
+            <tr>
+                <td>{{ champion[0] }}</td>
+                <td>{{ champion[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/">🏠 홈으로</a>
+</body>
+</html>

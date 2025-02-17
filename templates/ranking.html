@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 승률 랭킹</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #FFD700;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #1E1E1E;
+            color: #E0E0E0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+        th {
+            background-color: #333;
+            color: #FFD700;
+        }
+        tr:nth-child(even) {
+            background-color: #252525;
+        }
+        tr:hover {
+            background-color: #444;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #FFD700;
+            color: #121212;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        a:hover {
+            background-color: #E0C100;
+        }
+    </style>
+</head>
+<body>
+    <h1>🏆 승률 랭킹</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>순위</th>
+                <th>플레이어</th>
+                <th>총 경기 수</th>
+                <th>승리 횟수</th>
+                <th>승률 (%)</th>
+                <th>가장 많이 플레이한 챔피언</th>
+                <th>주 포지션</th>
+                <th>평균 KDA</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player, total_games, wins, win_rate, favorite_champion, favorite_position, avg_kda in rankings %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ player }}</td>
+                <td>{{ total_games }}</td>
+                <td>{{ wins }}</td>
+                <td>{{ "%.2f"|format(win_rate) }}%</td>
+                <td>{{ favorite_champion if favorite_champion else 'N/A' }}</td>
+                <td>{{ favorite_position if favorite_position else 'N/A' }}</td>
+                <td>{{ "%.2f"|format(avg_kda) if avg_kda is not none else '0.00' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">🏠 홈으로</a>
+</body>
+</html>

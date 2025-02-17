@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOL 경기 기록 시스템</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* 어두운 테마 스타일 */
+        body {
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00FFAA;
+        }
+
+        .card {
+            background-color: #1E1E1E;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 170, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .btn-custom {
+            background-color: #00FFAA;
+            color: #121212;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 10px 20px;
+            transition: 0.3s;
+            display: block;
+            width: 100%;
+        }
+
+        .btn-custom:hover {
+            background-color: #FF5733;
+            color: #FFFFFF;
+        }
+
+        .menu-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu-list li {
+            margin: 10px 0;
+        }
+
+        .menu-list a {
+            text-decoration: none;
+            color: #E0E0E0;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .menu-list a:hover {
+            color: #00FFAA;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏆 LOL 경기 기록 시스템</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <h3>📌 경기 기록</h3>
+                    <p>새로운 경기 기록을 추가하고 관리하세요.</p>
+                    <a href="/record" class="btn btn-custom">경기 기록 입력</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <h3>📊 승률 랭킹</h3>
+                    <p>플레이어들의 승률을 확인해보세요.</p>
+                    <a href="/ranking" class="btn btn-custom">승률 랭킹 보기</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <h3>📜 경기 기록 조회</h3>
+                    <p>이전 경기 기록을 살펴보세요.</p>
+                    <a href="/history" class="btn btn-custom">기록 조회</a>
+                </div>
+            </div>
+        </div>
+
+        <h2>📌 추가 기능</h2>
+        <ul class="menu-list">
+            <li>👤 <a href="/add_player">플레이어 추가</a></li>
+            <li>⚔️ <a href="/add_champion">챔피언 추가</a></li>
+        </ul>
+    </div>
+</body>
+</html>
