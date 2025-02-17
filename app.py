@@ -1,14 +1,16 @@
 from flask import Flask, render_template, request, redirect
 import mysql.connector
+import os
 
 app = Flask(__name__)
 
-# MySQL 연결 설정
+# MySQL 연결 설정 (InfinityFree)
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Dmriri4737!",  # MySQL 비밀번호 입력
-    database="lol_match_tracker"
+    host=os.getenv("DB_HOST", "sql112.infinityfree.com"),  # InfinityFree에서 제공한 Hostname
+    user=os.getenv("DB_USER", "if0_38332634"),  # InfinityFree의 DB 사용자명
+    password=os.getenv("DB_PASSWORD", "qBfuKy8ZlNlad"),  # 복사한 비밀번호 입력
+    database=os.getenv("DB_NAME", "if0_38332634_lol_match_tracker"),  # 생성한 DB 이름
+    port=int(os.getenv("DB_PORT", "3306"))
 )
 
 @app.route('/')
